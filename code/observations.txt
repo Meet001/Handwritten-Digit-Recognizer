@@ -1,0 +1,46 @@
+hyper parameters
+
+tast 2.1
+
+learning rate = 0.3
+number of hidden layers = 1
+number of nodes in each hidden layer = [6] 
+batchsize = 16 
+number of epochs = 10
+seed value = 42
+
+observations :- with 4 or less hidden layer neurons i am getting < 90 %  (around 85) accuracy in one out of five runs. i think reason for this is that with less number of nodes in hidden layer our function(nueral net) in getting stuck in a not desired local minima. the random number generators in python could also be affecting this. 
+
+tast 2.2
+
+learning rate = 0.1
+number of hidden layers = 1
+number of nodes in each hidden layer = [4] 
+batchsize = 20
+number of epochs = 10
+seed value = 42
+
+observations :- this dataset was observed to be highly saparable with very little echochs (only 1) and hidden layers. i was able to get desired ( 90% +) accuracy but to ensure the network's convergence irrespictive of random numbers the hidden nodes and epochs are taken a bit high
+
+tast 2.3
+
+learning rate = 0.3
+number of hidden layers = 2
+number of nodes in each hidden layer = [100,50] 
+batchsize = 16 
+number of epochs = 1
+seed value = 42
+
+observations :- this problem can be done using only 1 hidden layer also but it then requires more epoches to get 90% + accuracy. so considering train time as deciding parameter i have taken 2 hidden layer which can get 90% + accuracy in just one epoch
+
+tast 2.4
+
+learning rate = 0.1
+number of hidden layers = 2
+number of nodes in each hidden layer = [avg_pooling layer[10,12,12],[90]] 
+batchsize = 5
+number of epochs = 10
+seed value = 42
+
+observations :- the training time of this network was about 30-35 mins. after 6 epochs the train set accuracy was marginally surpassing validation set accuracy so to prevent model from overfitting i have stopped code with SIGINT.
+and the model parameter stored after 6 epochs gives the 37.5 (desired 35% +) accuracy. also i expected that for higher batch size code will take less time as number of batch iterations will be smaller (the reason for expecting this is that the back pass is vectorized in terms of batchsize), but on contrary my code ran much slower on very large batch size (i think this is because of repetation of weights batch-size times for vectorization) so i choose some in between batchsize (5) to make use of vectorization speed and aslo from not over occupying heap memory 
